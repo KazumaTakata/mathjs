@@ -2,7 +2,7 @@ var path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './test/linearSolver/linearSolverTest.js',
+  entry: './test/Interpolation/linearInter.js',
   output: {
     filename: 'bundle.js'
   },
@@ -10,10 +10,10 @@ module.exports = {
     modules: [path.resolve(__dirname, './src'), 'node_modules']
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'My App',
-      template: 'test/linearSolver/index.html'
-    })
+    // new HtmlWebpackPlugin({
+    //   title: 'My App',
+    //   template: 'test/linearSolver/index.html'
+    // })
   ],
   module: {
     rules: [
