@@ -1,0 +1,13 @@
+.equation {
+  display: flex;
+}
+
+.container {
+  margin: 25px 0px;
+}
+
+/* https://stackoverflow.com/a/51954861/4624070 */
+.equal {
+  align-self: center;
+  padding: 10px;
+}

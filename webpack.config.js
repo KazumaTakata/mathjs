@@ -2,7 +2,7 @@ var path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './test/Interpolation/linearInter.js',
+  entry: './src/Integration/trapezoidalRule.js',
   output: {
     filename: 'bundle.js'
   },
@@ -37,6 +37,14 @@ module.exports = {
             ]
           }
         }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader', // creates style nodes from JS strings
+          'css-loader', // translates CSS into CommonJS
+          'sass-loader' // compiles Sass to CSS, using Node Sass by default
+        ]
       }
     ]
   },

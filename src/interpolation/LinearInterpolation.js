@@ -43,4 +43,28 @@ class LinearInterp extends Interp {
   }
 }
 
+class PolynomialInterp extends Interp {
+  constructor(x, y, M) {
+    super(x, y, M)
+    this.P = new Array(M)
+  }
+  interp(x) {
+    let index_low = this.Bisection(x)
+
+    for (let i = 0; i < this.M; i++) {
+      for (let j = 0; j < this.M - i; j++) {
+        if (i == 0) {
+          this.P[index_low + j] = this.Ys[index_low + j]
+        } else {
+          this.P[j] =
+            ((x - this.Xs[index_low + i + 1]) * this.P[j] +
+              (this.Xs[index_low] - x) * this.P[j + 1]) /
+            (this.Xs[index_low] - this.Xs[index_low + i])
+        }
+      }
+    }
+
+    return this.P[0]
+  }
+}
 export { LinearInterp }
