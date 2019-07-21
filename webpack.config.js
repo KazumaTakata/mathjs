@@ -2,7 +2,7 @@ var path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/Integration/trapezoidalRule.js',
+  entry: './src/LU/index.js',
   output: {
     filename: 'bundle.js'
   },
