@@ -17,13 +17,94 @@ class Matrix2D {
       }
     }
   }
-
   zero() {
     for (let i = 0; i < this.height; i++) {
       for (let j = 0; j < this.width; j++) {
         this.Value[i][j] = 0
       }
     }
+  }
+  identity() {
+    if (this.height != this.width) {
+      console.warn('matrix is not square')
+    }
+    for (let i = 0; i < this.height; i++) {
+      for (let j = 0; j < this.width; j++) {
+        if (i == j) {
+          this.Value[i][j] = 1
+        } else {
+          this.Value[i][j] = 0
+        }
+      }
+    }
+  }
+
+  mul(mat) {
+    if (this.width != mat.height) {
+      console.warn('dimention mismatch')
+    }
+    let height = this.height
+    let width = mat.width
+    let newMat = new Matrix2D(height, width)
+
+    for (let i = 0; i < height; i++) {
+      for (let j = 0; j < width; j++) {
+        let sum = 0
+        for (let k = 0; k < this.width; k++) {
+          sum += this.Value[i][k] * mat.Value[k][j]
+        }
+        newMat.Value[i][j] = sum
+      }
+    }
+    return newMat
+  }
+  add(mat) {
+    if (this.width != mat.width) {
+      console.warn('dimention mismatch')
+    }
+    if (this.height != mat.height) {
+      console.warn('dimention mismatch')
+    }
+
+    let newMat = new Matrix2D(this.height, this.width)
+
+    for (let i = 0; i < this.height; i++) {
+      for (let j = 0; j < this.width; j++) {
+        newMat.Value[i][j] = this.Value[i][j] + mat.Value[i][j]
+      }
+    }
+
+    return newMat
+  }
+
+  sub(mat) {
+    if (this.width != mat.width) {
+      console.warn('dimention mismatch')
+    }
+    if (this.height != mat.height) {
+      console.warn('dimention mismatch')
+    }
+
+    let newMat = new Matrix2D(this.height, this.width)
+
+    for (let i = 0; i < this.height; i++) {
+      for (let j = 0; j < this.width; j++) {
+        newMat.Value[i][j] = this.Value[i][j] - mat.Value[i][j]
+      }
+    }
+
+    return newMat
+  }
+
+  scalaMul(scala) {
+    let newMat = new Matrix2D(this.height, this.width)
+    for (let i = 0; i < this.height; i++) {
+      for (let j = 0; j < this.width; j++) {
+        newMat.Value[i][j] = this.Value[i][j] * scala
+      }
+    }
+
+    return newMat
   }
 }
 
@@ -37,6 +118,66 @@ class Vector {
   set(array) {
     for (let i = 0; i < this.length; i++) {
       this.Value[i] = array[i]
+    }
+  }
+
+  add(v) {
+    let newVec = new Vector(this.length)
+    for (let i = 0; i < this.length; i++) {
+      newVec.Value[i] = this.Value[i] + v.Value[i]
+    }
+
+    return newVec
+  }
+
+  sub(v) {
+    let newVec = new Vector(this.length)
+    for (let i = 0; i < this.length; i++) {
+      newVec.Value[i] = this.Value[i] - v.Value[i]
+    }
+
+    return newVec
+  }
+
+  scalaMul(scala) {
+    let newVec = new Vector(this.length)
+    for (let i = 0; i < this.length; i++) {
+      newVec.Value[i] = this.Value[i] * scala
+    }
+
+    return newVec
+  }
+
+  outerProduct(v) {
+    if (this.length != v.length) {
+      console.warn('dimention mismatch')
+    }
+    let newMat = new Matrix2D(this.length, this.length)
+    for (let i = 0; i < this.length; i++) {
+      for (let j = 0; j < this.length; j++) {
+        newMat.Value[i][j] = this.Value[i] * v.Value[j]
+      }
+    }
+    return newMat
+  }
+
+  norm() {
+    let sum = 0
+    for (let i = 0; i < this.length; i++) {
+      sum += this.Value[i] * this.Value[i]
+    }
+
+    return Math.sqrt(sum)
+  }
+
+  norm2() {
+    let norm = this.norm()
+    return norm * norm
+  }
+
+  zero() {
+    for (let i = 0; i < this.length; i++) {
+      this.Value[i] = 0
     }
   }
 }
