@@ -2,7 +2,7 @@ var path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/LinearAlgebra/HHtransform.js',
+  entry: './src/FFT/fourierTransform.js',
   output: {
     filename: 'bundle.js'
   },
