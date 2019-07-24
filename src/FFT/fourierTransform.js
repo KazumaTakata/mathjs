@@ -1,6 +1,5 @@
 import { Complex } from './complexNumber'
 import { Vector } from 'matrix'
-import { AudioFileRequest } from './audiofile'
 
 function fourierTransform(x) {
   let N = x.length
@@ -60,13 +59,3 @@ for (let i = 0; i < 2048; i++) {
 ctx.stroke()
 
 console.log(freqArray)
-
-var request = new AudioFileRequest('sample.wav')
-request.onSuccess = new (function(decoded) {
-  console.log(decoded)
-  // Use the decoded data
-})()
-request.onFailure = new (function() {
-  // Something went wrong
-})()
-request.send()

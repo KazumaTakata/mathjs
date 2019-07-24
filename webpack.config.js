@@ -2,7 +2,7 @@ var path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/FFT/fourierTransform.js',
+  entry: './src/PDE/1dwave.js',
   output: {
     filename: 'bundle.js'
   },
