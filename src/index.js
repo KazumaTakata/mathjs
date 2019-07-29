@@ -1,4 +1,3 @@
-import { Vector, Matrix2D } "./matrix"
-
+import { Vector, Matrix2D } from './matrix'
 
 export { Vector, Matrix2D }
