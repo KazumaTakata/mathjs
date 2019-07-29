@@ -5,9 +5,14 @@ let C = 1.0
 let TXarray = new Array(time)
 
 for (let i = 0; i < time; i++) {
-  TXarray[i] = new Array(N)
+  let tmp = new Array(N)
+  for (let i = 0; i < N; i++) {
+    tmp[i] = 0
+  }
+  TXarray[i] = tmp
 }
 
+// should use smooth initial value like gaussian dis
 function initializeWave(TXarray) {
   for (let i = 0; i < N; i++) {
     if (i == 0) {
@@ -15,11 +20,12 @@ function initializeWave(TXarray) {
     } else if (i == N - 1) {
       TXarray[0][i] = 0
     } else {
-      if (i < 2000 && i > 50) {
-        TXarray[0][i] = Math.sin((i / 100) * 2 * Math.PI)
-      } else {
-        TXarray[0][i] = 0
-      }
+      TXarray[0][i] = Math.exp(-Math.pow((i - 500) / 20, 2)) * 1
+      //   if (i < 2000 && i > 50) {
+      //     TXarray[0][i] = Math.sin((i / 100) * 2 * Math.PI)
+      //   } else {
+      //     TXarray[0][i] = 0
+      //   }
     }
   }
 }
