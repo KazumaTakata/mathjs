@@ -158,6 +158,15 @@ class Vector {
     return newVec
   }
 
+  dot(v) {
+    let sum = 0
+    for (let i = 0; i < this.length; i++) {
+      sum += this.Value[i] * v.Value[i]
+    }
+
+    return sum
+  }
+
   scalaMul(scala) {
     let newVec = new Vector(this.length)
     for (let i = 0; i < this.length; i++) {
