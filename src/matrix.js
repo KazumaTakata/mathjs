@@ -58,6 +58,25 @@ class Matrix2D {
     }
     return newMat
   }
+  mulVec(vec) {
+    if (this.width != vec.length) {
+      console.warn('dimention mismatch')
+    }
+
+    let height = this.height
+
+    let newVec = new Vector(height)
+
+    for (let i = 0; i < height; i++) {
+      let sum = 0
+      for (let k = 0; k < this.width; k++) {
+        sum += this.Value[i][k] * vec.Value[k]
+      }
+      newVec.Value[i] = sum
+    }
+    return newVec
+  }
+
   add(mat) {
     if (this.width != mat.width) {
       console.warn('dimention mismatch')
