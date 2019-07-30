@@ -167,6 +167,18 @@ class Vector {
     return sum
   }
 
+  crossProduct(v) {
+    if (this.length != 3 || v.length != 3) {
+      console.warn('vector should have 3 dimention')
+    }
+    let newVec = new Vector(3)
+    newVec.Value[0] = this.Value[1] * v.Value[2] - this.Value[2] * v.Value[1]
+    newVec.Value[1] = this.Value[2] * v.Value[0] - this.Value[0] * v.Value[2]
+    newVec.Value[2] = this.Value[0] * v.Value[1] - this.Value[1] * v.Value[0]
+
+    return newVec
+  }
+
   scalaMul(scala) {
     let newVec = new Vector(this.length)
     for (let i = 0; i < this.length; i++) {
